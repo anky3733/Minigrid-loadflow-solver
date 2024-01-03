@@ -52,6 +52,8 @@ The dataset contains a simplified description of an electricity grid, featuring 
 
 ## Second Task : 
 
+### Possible Solutions:
+
 #### Measuring Bias:
 
 1. **Calculate Bias:**
