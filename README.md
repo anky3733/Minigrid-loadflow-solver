@@ -39,7 +39,7 @@ The dataset contains a simplified description of an electricity grid, featuring 
 ### Components
 
 1. **config.yaml:**
-   User-configurable file, where the path to training and evaluation files must be specified, along with other configuration details such as learning rates, batch size, and number of epochs.
+   User-configurable file where the path to training and evaluation files must be specified, along with other configuration details such as learning rates, batch size, and number of epochs.
 
 2. **helper_functions.py:**
    Includes functions (`create_electrical_grid_data` and `get_electrical_grid_data`) to convert injections, adjacency data, and loads data into a graph dataset. Defines the `ElectricalGridModel` using GATConv.
@@ -67,10 +67,13 @@ Modify the loss function to include a penalty term for underestimation, potentia
 
 ### Components
 
-1. **bias_estimation.py:**
+1. **config.yaml:**
+   User-configurable file where the path to training and evaluation files must be specified.
+
+2. **bias_estimation.py:**
    Uses the model trained in the first task. Calculates bias as mentioned in the documentation and analyzes the distribution, achieving an overall bias score of -0.1411.
 
-2. **penalizing_underestimation.py:**
+3. **penalizing_underestimation.py:**
    Modifies the loss function to include a penalty term for cases where the model underestimates the target values. Achieves an overall bias score of -0.3120.
 
 The higher negative bias suggests that the penalty has successfully influenced the model to be more cautious about underestimation. The penalty for underestimation has shifted the model's behavior towards reducing underestimation, even if it comes at the cost of potentially having more overestimation.
@@ -84,7 +87,7 @@ Busbar 3 has been split into two by the grid operator, requiring structural chan
 ### Components
 
 1. **config.yaml:**
-   User-configurable file where the path to evaluation files is provided.
+   User-configurable file where the path to training and evaluation files must be specified
 
 2. **eval.py:**
    Loads data files from the config file, transforms them into the proper format using `create_electrical_grid_data`. The extended model includes the additional substation. Weights are loaded from the pre-trained model, and predictions are saved to the `loads.npy` file.
