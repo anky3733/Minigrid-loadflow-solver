@@ -24,7 +24,7 @@ The dataset contains a simplified description of an electricity grid, featuring 
 4. **eval.py:**
    Loads validation files from paths specified in the config files, transforms data into the required format with `create_electrical_grid_data`, loads the trained model, makes predictions, and saves predictions as `loads.npy`.
 
-## Second Task : Measure the bias of your model and think of ways how you could potentially reduce underestimation at the cost of more overestimation.
+## Second Task : 
 
 #### : Measuring Bias
 
