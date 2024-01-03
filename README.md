@@ -2,7 +2,7 @@
 
 ## Dataset Description
 
-[![Depiction of the IEEE case14 powergrid](Grid.png)](https://www.researchgate.net/publication/342513986_Quadratically_Constrained_Quadratic_Programming_Formulation_of_Contingency_Constrained_Optimal_Power_Flow_with_Photovoltaic_Generation)
+[![Depiction of the IEEE case14 powergrid](Grid.png)]
 
 The dataset contains a simplified description of an electricity grid, featuring 14 busbars and 20 branches connecting these busbars. Each busbar represents a substation, while each branch represents a powerline connecting substations to transport energy.
 
