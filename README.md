@@ -39,6 +39,8 @@ The dataset contains a simplified description of an electricity grid, featuring 
 **Penalizing Underestimation:**
 Modify the loss function to include a penalty term for underestimation, potentially reducing underestimation at the cost of more overestimation.
 
+### Components
+
 1. **bias_estimation.py:**
    Uses the model trained in the first task. Calculates bias as mentioned in the documentation and analyzes the distribution, achieving an overall bias score of -0.1411.
 
@@ -52,6 +54,8 @@ The higher negative bias suggests that the penalty has successfully influenced t
 ### Model Adjustment
 
 Busbar 3 has been split into two by the grid operator, requiring structural changes to the model. A new busbar 14 has been added to the grid model. The saved model's architecture is adjusted, involving extending the model to handle the new sub-station. The weights are loaded from the pre-trained model.
+
+### Components
 
 1. **config.yaml:**
    User-configurable file where the path to evaluation files is provided.
