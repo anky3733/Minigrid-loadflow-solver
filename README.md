@@ -39,7 +39,7 @@ The dataset contains a simplified description of an electricity grid, featuring 
 ### Components
 
 1. **config.yaml:**
-   User-configurable file where the path to training and evaluation files can be specified, along with other configuration details such as learning rates, batch size, and number of epochs.
+   User-configurable file, where the path to training and evaluation files must be specified, along with other configuration details such as learning rates, batch size, and number of epochs.
 
 2. **helper_functions.py:**
    Includes functions (`create_electrical_grid_data` and `get_electrical_grid_data`) to convert injections, adjacency data, and loads data into a graph dataset. Defines the `ElectricalGridModel` using GATConv.
