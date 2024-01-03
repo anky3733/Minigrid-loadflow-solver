@@ -63,6 +63,8 @@ Examine the distribution of bias values to understand the magnitude and directio
 **Penalizing Underestimation:**
 Modify the loss function to include a penalty term for underestimation. This penalty term could be a function of the absolute value of the difference between predicted and actual values.
 
+### Implementation
+
 **bias_estimation.py:**
 In this script, we use the model trained in the first task. We calculate the bias as mentioned in the section - Calculating Bias and analyze the distribution. We achieved an overall bias score of -0.1411.
 
