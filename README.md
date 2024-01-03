@@ -10,6 +10,32 @@ The dataset contains a simplified description of an electricity grid, featuring 
 
 ## First Task
 
+### Neural Network Engineering Decisions:
+
+1. **Graph Neural Network Architecture:**
+   - GATConv used for its attention mechanisms capturing complex relationships.
+
+2. **Number of Layers and Hidden Units:**
+   - Two GATConv layers with 32 hidden units for hierarchical feature learning.
+
+3. **Activation Function:**
+   - ReLU applied for non-linearity.
+
+4. **Dropout:**
+   - Applied after each GATConv layer to prevent overfitting.
+
+5. **Loss Function:**
+   - Mean Squared Error (MSE) loss for regression.
+
+6. **Optimization Algorithm:**
+   - AdamW optimizer with a learning rate of 0.01.
+
+7. **Graph Data Representation:**
+   - PyTorch Geometric Data class used for graph data representation.
+
+8. **Dataset Splitting:**
+   - 70% training, 15% validation, 15% testing for model evaluation.
+
 ### Components
 
 1. **config.yaml:**
