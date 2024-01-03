@@ -92,5 +92,5 @@ Busbar 3 has been split into two by the grid operator, requiring structural chan
    User-configurable file where the path to training and evaluation files must be specified
 
 2. **eval.py:**
-   Loads data files from the config file, transforms them into the proper format using `create_electrical_grid_data`. The extended model includes the additional substation. Weights are loaded from the pre-trained model, and predictions are saved to the `loads.npy` file.
+   Loads data files from the config file, transforms them into the proper format using `create_electrical_grid_data`. The `ExtendedElectricalGridModel` is created. This extended model includes the additional substation. Weights are loaded from the pre-trained model, and predictions are made and saved to the `loads.npy` file.
 
