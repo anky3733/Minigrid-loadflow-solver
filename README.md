@@ -2,8 +2,6 @@
 
 ## Dataset Description
 
-![Depiction of the IEEE case14 powergrid](Grid.png)
-
 The dataset contains a simplified description of an electricity grid, featuring 14 busbars and 20 branches connecting these busbars. Each busbar represents a substation, while each branch represents a powerline connecting substations to transport energy.
 
 - **Branch Information:** Stored in the `adjacency.json` file, providing details like from/to busbars and reactance values.
