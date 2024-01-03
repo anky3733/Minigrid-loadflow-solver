@@ -1,74 +1,64 @@
 # Minigrid Loadflow Solver
 
-## Depiction
-
-This repository contains a simplified description and solver for an electricity grid. The grid consists of 14 busbars and 20 branches that connect these busbars. A busbar is the electrotechnical equivalent of a substation, and a branch is the equivalent of a powerline connecting substations.
-
 ## Dataset Description
 
-The dataset comprises the following files:
+The dataset contains a simplified description of an electricity grid, featuring 14 busbars and 20 branches connecting these busbars. Each busbar represents a substation, while each branch represents a powerline connecting substations to transport energy.
 
-- **adjacency.json**: Contains branch information. Each data point connects two busbars, specifying the reactance hindrance.
-  Example data point: `"0": {"from": 0, "to": 1, "reactance": 0.05916999999999999}`.
-
-- **injections.npy**: A (n_timesteps, n_bus) numpy array, where each timestep represents the power injected onto every bus.
-
-- **loads.npy**: The target for prediction. A (n_timesteps, n_branch) numpy array representing the current on each branch.
+- **Branch Information:** Stored in the `adjacency.json` file, providing details like from/to busbars and reactance values.
+- **Power Injection Data:** In the `injections.npy` file, representing injected power in MW for each busbar at different timesteps.
+- **Target Data:** The `loads.npy` file holds target values, representing the current on each branch at different timesteps.
 
 ## First Task
 
-### 1. config.yaml
+### Components
 
-This configuration file requires users to provide paths to training and evaluation files. Additionally, configuration details such as learning rates, batch size, and the number of epochs can be specified.
+1. **config.yaml:**
+   User-configurable file where the path to training and evaluation files can be specified, along with other configuration details such as learning rates, batch size, and number of epochs.
 
-### 2. helper_functions.py
+2. **helper_functions.py:**
+   Includes functions (`create_electrical_grid_data` and `get_electrical_grid_data`) to convert injections, adjacency data, and loads data into a graph dataset. Defines the `ElectricalGridModel` using GATConv.
 
-Includes utility functions:
-- `create_electrical_grid_data`: Converts injections, adjacency data, and loads data into a graph dataset.
-- `get_electrical_grid_data`: Constructs a graph dataset from injections, adjacency data, and loads data.
-- `ElectricalGridModel`: Defines a GATConv model for training.
+3. **train.py:**
+   Main script for the first task. Loads data based on paths provided in config files, transforms it into a graph dataset with `get_electrical_grid_data`, trains the `ElectricalGridModel` using MSE Loss, saves model checkpoints, and plots Training Losses and Validation Losses.
 
-### 3. train.py
-
-This script is the main component of the first task:
-- Loads data files based on the addresses provided in config files.
-- Transforms the data into a Graph Dataset using `get_electrical_grid_data`.
-- Trains the `ElectricalGridModel`.
-- Validates performance using Mean Squared Error (MSE) Loss.
-- Saves a model checkpoint.
-- Plots Training Losses and Validation Losses with respect to the number of epochs.
-
-### 4. eval.py
-
-This script:
-- Loads validation files from the address provided in the config files.
-- Transforms the data into the proper format using `create_electrical_grid_data`.
-- Loads the model saved during training.
-- Makes predictions and saves them as `loads.npy`.
+4. **eval.py:**
+   Loads validation files from paths specified in the config files, transforms data into the required format with `create_electrical_grid_data`, loads the trained model, makes predictions, and saves predictions as `loads.npy`.
 
 ## Second Task
 
-### Documented Thoughts to potentially reduce underestimation at the cost of more overestimation.
-
 ### Measuring Bias
 
-**1. Calculate Bias:**
-The bias can be calculated as the mean difference between predicted and actual values. Positive bias indicates overestimation, while negative bias indicates underestimation.
+#### Documented Thoughts:
 
-**2. Analyze Bias Distribution:**
-Examine the distribution of bias values to understand the magnitude and direction of the bias across different branches or nodes in the electrical grid.
+1. **Calculate Bias:**
+   Compute the bias by comparing predicted values to actual values. Positive bias indicates overestimation, while negative bias indicates underestimation.
 
-### Strategies to Address Underestimation
+2. **Analyze Bias Distribution:**
+   Examine the distribution of bias values to understand the magnitude and direction of the bias across different branches or nodes in the electrical grid.
+
+#### Strategies to Address Underestimation:
 
 **Penalizing Underestimation:**
-Modify the loss function to include a penalty term for underestimation. This penalty term could be a function of the absolute value of the difference between predicted and actual values.
+Modify the loss function to include a penalty term for underestimation, potentially reducing underestimation at the cost of more overestimation.
 
-### Implementation
+1. **bias_estimation.py:**
+   Uses the model trained in the first task. Calculates bias as mentioned in the documentation and analyzes the distribution, achieving an overall bias score of -0.1411.
 
-**bias_estimation.py:**
-In this script, we use the model trained in the first task. We calculate the bias as mentioned in the section - Calculating Bias and analyze the distribution. We achieved an overall bias score of -0.1411.
+2. **penalizing_underestimation.py:**
+   Modifies the loss function to include a penalty term for cases where the model underestimates the target values. Achieves an overall bias score of -0.3120.
 
-**penalizing_underestimation.py:**
-In this script, we modify the loss function to include a penalty term for cases where the model underestimates the target values. We achieved an overall bias score of -0.3120.
+The higher negative bias suggests that the penalty has successfully influenced the model to be more cautious about underestimation. The penalty for underestimation has shifted the model's behavior towards reducing underestimation, even if it comes at the cost of potentially having more overestimation.
 
-The higher negative bias suggests that the penalty has successfully influenced the model to be more cautious about underestimation. This implies that the model, with the penalty, is now more inclined to predict values that are closer to or higher than the actual loads. The penalty for underestimation has shifted the model's behavior towards reducing underestimation, even if it comes at the cost of potentially having more overestimation.
+## Third Task
+
+### Model Adjustment
+
+Busbar 3 has been split into two by the grid operator, requiring structural changes to the model. A new busbar 14 has been added to the grid model. The saved model's architecture is adjusted, involving extending the model to handle the new sub-station. The weights are loaded from the pre-trained model.
+
+1. **config.yaml:**
+   User-configurable file where the path to evaluation files is provided.
+
+2. **eval.py:**
+   Loads data files from the config file, transforms them into the proper format using `create_electrical_grid_data`. The extended model includes the additional substation. Weights are loaded from the pre-trained model, and predictions are saved to the `loads.npy` file.
+
+Feel free to copy and paste this into your `readme.md` file.
