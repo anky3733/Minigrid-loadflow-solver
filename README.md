@@ -53,7 +53,7 @@ This script:
 ### Measuring Bias
 
 **1. Calculate Bias:**
-Compute the bias of your model by comparing the predicted values to the actual values. The bias can be calculated as the mean difference between predicted and actual values. Positive bias indicates overestimation, while negative bias indicates underestimation.
+The bias can be calculated as the mean difference between predicted and actual values. Positive bias indicates overestimation, while negative bias indicates underestimation.
 
 **2. Analyze Bias Distribution:**
 Examine the distribution of bias values to understand the magnitude and direction of the bias across different branches or nodes in the electrical grid.
