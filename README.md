@@ -24,11 +24,9 @@ The dataset contains a simplified description of an electricity grid, featuring 
 4. **eval.py:**
    Loads validation files from paths specified in the config files, transforms data into the required format with `create_electrical_grid_data`, loads the trained model, makes predictions, and saves predictions as `loads.npy`.
 
-## Second Task
+## Second Task : Measure the bias of your model and think of ways how you could potentially reduce underestimation at the cost of more overestimation.
 
-### Measuring Bias
-
-#### Documented Thoughts:
+#### : Measuring Bias
 
 1. **Calculate Bias:**
    Compute the bias by comparing predicted values to actual values. Positive bias indicates overestimation, while negative bias indicates underestimation.
@@ -61,4 +59,3 @@ Busbar 3 has been split into two by the grid operator, requiring structural chan
 2. **eval.py:**
    Loads data files from the config file, transforms them into the proper format using `create_electrical_grid_data`. The extended model includes the additional substation. Weights are loaded from the pre-trained model, and predictions are saved to the `loads.npy` file.
 
-Feel free to copy and paste this into your `readme.md` file.
