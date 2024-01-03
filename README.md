@@ -79,7 +79,7 @@ The higher negative bias suggests that the penalty has successfully influenced t
 
 ### Model Adjustment
 
-Busbar 3 has been split into two by the grid operator, requiring structural changes to the model. A new busbar 14 has been added to the grid model. The saved model's architecture is adjusted, involving extending the model to handle the new sub-station. The weights are loaded from the pre-trained model.
+Busbar 3 has been split into two by the grid operator, requiring structural changes to the model. A new busbar 14 has been added to the grid model. The saved model's architecture is adjusted, involving extending the model to handle the new sub-station. The weights are loaded from the pre-trained model for making the predictions.
 
 ### Components
 
