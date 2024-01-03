@@ -1,0 +1,9 @@
+# config.yaml
+
+learning_rate: 0.01
+batch_size: 64
+n_epochs: 2000
+
+train_injections_file: /home/phutane/instadeep/datasets/injections.npy
+train_adjacency_file: /home/phutane/instadeep/datasets/adjacency.json
+train_loads_file: /home/phutane/instadeep/datasets/loads.npy
