@@ -52,7 +52,7 @@ The dataset contains a simplified description of an electricity grid, featuring 
 
 ## Second Task : 
 
-#### Measuring Bias
+#### Measuring Bias:
 
 1. **Calculate Bias:**
    Compute the bias by comparing predicted values to actual values. Positive bias indicates overestimation, while negative bias indicates underestimation.
