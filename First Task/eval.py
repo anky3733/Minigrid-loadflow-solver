@@ -6,7 +6,7 @@ import os
 import yaml
 
 # Import your model and dataset functions
-from helper_functions import create_electrical_grid_data, get_electrical_grid_data, ElectricalGridModel
+from helper_functions import create_electrical_grid_data, ElectricalGridModel
 
 # Get the current working directory
 current_dir = os.path.dirname(os.path.realpath(__file__))
