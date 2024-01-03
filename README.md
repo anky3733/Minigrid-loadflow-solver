@@ -13,13 +13,13 @@ The dataset contains a simplified description of an electricity grid, featuring 
 ### Neural Network Engineering Decisions:
 
 1. **Graph Neural Network Architecture:**
-   - GATConv used for its attention mechanisms capturing complex relationships.
+   - GATConv is chosen as it performs neighborhood aggregation with attention mechanisms. Attention mechanisms allow the model to focus on different parts of the input graph differently, capturing more complex relationships.
 
 2. **Number of Layers and Hidden Units:**
    - Two GATConv layers with 32 hidden units for hierarchical feature learning.
 
 3. **Activation Function:**
-   - ReLU applied for non-linearity.
+   - ReLU applied for non-linearity, helping it learn complex patterns and preventing vanishing gradient problems.
 
 4. **Dropout:**
    - Applied after each GATConv layer to prevent overfitting.
