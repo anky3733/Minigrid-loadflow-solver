@@ -1,4 +1,4 @@
 # config.yaml
 
-eval_injections_file: /home/phutane/instadeep/validation/injections.npy
-eval_adjacency_file: /home/phutane/instadeep/validation/adjacency.json
+eval_injections_file: /path/to/validation/injections.npy
+eval_adjacency_file: /path/to/validation/adjacency.json

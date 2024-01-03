@@ -4,6 +4,6 @@ learning_rate: 0.01
 batch_size: 64
 n_epochs: 2000
 
-train_injections_file: /home/phutane/instadeep/datasets/injections.npy
-train_adjacency_file: /home/phutane/instadeep/datasets/adjacency.json
-train_loads_file: /home/phutane/instadeep/datasets/loads.npy
+train_injections_file: /path/to/datasets/injections.npy
+train_adjacency_file: /path/to/datasets/adjacency.json
+train_loads_file: /path/to/datasets/loads.npy
